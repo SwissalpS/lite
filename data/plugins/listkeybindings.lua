@@ -14,6 +14,7 @@ local function listkeybindings()
     sOut = sOut .. '\n'
   end
 
+  core.root_view:open_doc(core.open_doc())
   core.active_view.doc:text_input(sOut)
 
 end

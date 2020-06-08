@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Lite
+GenericName=Code Editor
+Comment=Lightweight code editor
+TryExec=lite
+Exec=lite %F
+Icon=org.gnome.gedit
+Type=Application
+Categories=Development;Office;Utility;TextEditor;
+Terminal=false
+Keywords=Run;
+

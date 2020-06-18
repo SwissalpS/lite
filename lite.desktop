@@ -4,6 +4,8 @@ GenericName=Code Editor
 Comment=Lightweight code editor
 TryExec=lite
 Exec=lite %F
+# workdir. Neither using ~/ nor $HOME/ works so you need to hard-code path
+#Path=/home/yourname/Documents/lite/
 Icon=org.gnome.gedit
 Type=Application
 Categories=Development;Office;Utility;TextEditor;

@@ -73,11 +73,16 @@ function View:on_mouse_pressed(button, x, y, clicks)
     self.dragging_scrollbar = true
     return true
   end
+  if self:scrollbar_overlaps_point_horizontal(x, y) then
+    self.dragging_scrollbar_horizontal = true
+    return true
+  end
 end
 
 
 function View:on_mouse_released(button, x, y)
   self.dragging_scrollbar = false
+  self.dragging_scrollbar_horizontal = false
 end
 
 
@@ -86,7 +91,12 @@ function View:on_mouse_moved(x, y, dx, dy)
     local delta = self:get_scrollable_size() / self.size.y * dy
     self.scroll.to.y = self.scroll.to.y + delta
   end
+  if self.dragging_scrollbar_horizontal then
+    local delta = self:get_scrollable_size() / self.size.x * dx
+    self.scroll.to.x = self.scroll.to.x + delta
+  end
   self.hovered_scrollbar = self:scrollbar_overlaps_point(x, y)
+  self.hovered_scrollbar_horizontal = self:scrollbar_overlaps_point_horizontal(x, y)
 end
 
 
@@ -141,6 +151,34 @@ function View:draw_scrollbar()
   local highlight = self.hovered_scrollbar or self.dragging_scrollbar
   local color = highlight and style.scrollbar2 or style.scrollbar
   renderer.draw_rect(x, y, w, h, color)
+end
+
+
+function View:scrollbar_overlaps_point_horizontal(x, y)
+  local sx, sy, sw, sh = self:get_scrollbar_rect_horizontal()
+  return x >= sx - sw * 3 and x < sx + sw and y >= sy and y < sy + sh
+end
+
+
+function View:get_scrollbar_rect_horizontal()
+  local sz = self:get_scrollable_size()
+  if sz <= self.size.x or sz == math.huge then
+    return 0, 0, 0, 0
+  end
+  local w = math.max(20, self.size.y * self.size.y / sz)
+  return
+    self.position.x + self.scroll.x * (self.size.x - w) / (sz - self.size.x),
+    self.position.y + self.size.y - style.scrollbar_size * 2,
+    w,
+    style.scrollbar_size
+end
+
+
+function View:draw_scrollbar_horizontal()
+    local x, y, w, h = self:get_scrollbar_rect_horizontal()
+    local highlight = self.hovered_scrollbar_horizontal or self.dragging_scrollbar_horizontal
+    local color = highlight and style.scrollbar2 or style.scrollbar
+    renderer.draw_rect(x, y, w, h, color)
 end
 
 

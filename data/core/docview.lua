@@ -377,6 +377,7 @@ function DocView:draw()
   core.pop_clip_rect()
 
   self:draw_scrollbar()
+  self:draw_scrollbar_horizontal()
 end
 
 

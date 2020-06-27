@@ -3,7 +3,7 @@ local style = require "core.style"
 
 style.padding = { x = common.round(14 * SCALE), y = common.round(7 * SCALE) }
 style.divider_size = common.round(1 * SCALE)
-style.scrollbar_size = common.round(4 * SCALE)
+style.scrollbar_size = common.round(8 * SCALE)
 style.caret_width = common.round(2 * SCALE)
 style.tab_width = common.round(170 * SCALE)
 
@@ -24,7 +24,7 @@ style.selection = { common.color "rgba(239,166,71,110)" }
 style.line_number = { common.color "#525259" }
 style.line_number2 = { common.color "#83838f" }
 style.line_highlight = { common.color "#343438" }
-style.scrollbar = { common.color "#414146" }
+style.scrollbar = { common.color "#717176" }
 style.scrollbar2 = { common.color "#4b4b52" }
 
 style.syntax = {}

@@ -166,9 +166,11 @@ function View:get_scrollbar_rect_horizontal()
     return 0, 0, 0, 0
   end
   local w = math.max(20, self.size.x * self.size.x / sz)
+  -- TODO: figure out if there is a divider at all
+  local divider_height = style.divider_size * 4
   return
     self.position.x + self.scroll.x * (self.size.x - w) / (sz - self.size.x),
-    self.position.y + self.size.y - style.scrollbar_size * 2,
+    self.position.y + self.size.y - style.scrollbar_size - divider_height,
     w,
     style.scrollbar_size
 end

@@ -13,7 +13,7 @@ if [[ $* == *windows* ]]; then
   x86_64-w64-mingw32-windres res.rc -O coff -o res.res
 else
   platform="unix"
-  outfile="lite"
+  outfile="lite-net"
   compiler="gcc"
   cflags="$cflags -DLUA_USE_POSIX"
   lflags="$lflags -o $outfile"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cflags="-Wall -O3 -g -std=gnu11 -fno-strict-aliasing -Isrc"
-lflags="-lSDL2 -lm"
+lflags="-lSDL2 -lSDL2_net -lm"
 
 if [[ $* == *windows* ]]; then
   platform="windows"

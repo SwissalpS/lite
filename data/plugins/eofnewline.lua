@@ -3,18 +3,16 @@ local command = require "core.command"
 local Doc = require "core.doc"
 
 local function eof_newline(doc)
-	local eofl = #doc.lines
-	for i = eofl, 1, -1 do
-		if string.match(doc.lines[i], "^%s*$") then
-			doc:remove(i, 1, i + 1, math.huge)
-		else
-			break
-		end
+	local leof, neof = #doc.lines, #doc.lines
+	for i = leof, 1, -1 do
+		if not string.match(doc.lines[i], "^%s*$") then break end
+		neof = i
 	end
-	eofl = #doc.lines
-	if "\n" ~= doc.lines[eofl] then
-		doc:insert(eofl, math.huge, "\n")
+	if neof ~= leof then
+		doc:remove(neof, 1, leof, math.huge)
+		return
 	end
+	doc:insert(leof, math.huge, "\n")
 end
 
 local save = Doc.save
@@ -26,4 +24,5 @@ end
 command.add("core.docview", {
 	["eof-newline:eof-newline"] = function() eof_newline(core.active_view.doc) end,
 })
+
 

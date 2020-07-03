@@ -1,3 +1,10 @@
+--[[
+	eofnewline.lua
+	makes sure file ends with newline
+	version: 20200703_112529
+	originally by bokunodev
+	https://github.com/bokunodev/lite_modules/blob/master/plugins/eofnewline.lua?raw=1
+--]]
 local core = require "core"
 local command = require "core.command"
 local Doc = require "core.doc"
@@ -24,4 +31,5 @@ end
 command.add("core.docview", {
 	["eof-newline:eof-newline"] = function() eof_newline(core.active_view.doc) end,
 })
+
 

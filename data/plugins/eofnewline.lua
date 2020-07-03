@@ -12,7 +12,7 @@ local function eof_newline(doc)
 		doc:remove(neof, 1, leof, math.huge)
 		return
 	end
-	doc:insert(leof, math.huge, "\n")
+	if "\n" ~= doc.lines[leof] then doc:insert(leof, math.huge, "\n") end
 end
 
 local save = Doc.save
@@ -24,5 +24,4 @@ end
 command.add("core.docview", {
 	["eof-newline:eof-newline"] = function() eof_newline(core.active_view.doc) end,
 })
-
 

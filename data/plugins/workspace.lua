@@ -149,8 +149,6 @@ local function save_workspace()
     end
     fp:write("return ", serialize(t), "\n")
     fp:close()
-  else
-    core.error("Failed to write workspace to: " .. workspace_filename)
   end
 end
 

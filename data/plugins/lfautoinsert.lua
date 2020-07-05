@@ -20,6 +20,7 @@ config.lfautoinsert_map = {
   ["^%s*<([^/][^%s>]*)[^>]*>%s*\n"] = "</$TEXT>",
 }
 
+
 local function indent_size(doc, line)
   local text = doc.lines[line] or ""
   local s, e = text:find("^[\t ]*")

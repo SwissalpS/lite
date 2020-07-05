@@ -60,8 +60,6 @@ command.add("core.docview", {
       system.exec("start " .. htmlfile)
     else
 --      system.exec(string.format("xdg-open %q", htmlfile))
---      system.exec(string.format("evince -w %q", htmlfile))
---      system.exec(string.format("evince %q", htmlfile))
       system.exec(string.format("chromium-browser --incognito --new-window %q", htmlfile))
     end
 
